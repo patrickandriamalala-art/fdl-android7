@@ -1,0 +1,88 @@
+FDL FJKM - Application Android (lecture seule + rappels)
+=========================================================
+
+CE QUE FAIT L'APPLICATION
+  - Chaque membre choisit son groupe et son nom (une seule fois).
+  - Il voit sa prochaine participation (date, role, equipe), les passages de son groupe
+    et le programme complet d'un dimanche. Il ne peut RIEN modifier.
+  - Notifications de rappel (la veille a 18h et le dimanche a 6h, modifiables), meme si
+    l'application est fermee, avec le role et l'equipe dans la notification.
+  - Mise a jour AUTOMATIQUE du programme par internet (voir GUIDE_MISE_A_JOUR_EN_LIGNE.txt) :
+    l'application ne se connecte que pour lire le fichier programme.json que vous publiez,
+    et n'envoie aucune donnee.
+
+----------------------------------------------------------------------
+1) CREER LE FICHIER APK  (a faire une seule fois, par le responsable)
+----------------------------------------------------------------------
+Methode A - sans rien installer sur votre ordinateur (GitHub, gratuit)
+  1. Creez un compte gratuit sur github.com.
+  2. Cliquez sur "+" (en haut a droite) > "New repository". Nom : fdl-android.
+     Choisissez "Private" puis "Create repository".
+  3. Dezippez FDL_Android.zip. Ouvrez le dossier "FDL_Android", selectionnez TOUT son
+     contenu (Ctrl+A), y compris le dossier ".github", et glissez-deposez dans la page
+     GitHub ("uploading an existing file"). Attendez la fin, puis "Commit changes".
+  4. Onglet "Actions" : la construction demarre toute seule (si GitHub demande
+     d'activer les workflows, acceptez). Patientez 5 a 10 minutes jusqu'a la pastille verte.
+     Si rien ne demarre : Actions > "Construire l'APK" > "Run workflow".
+  5. Cliquez sur la construction terminee. En bas de la page, section "Artifacts" :
+     telechargez "FDL-apk" (un .zip). Dezippez-le : vous obtenez  app-debug.apk .
+
+Methode B - avec Android Studio (gratuit, a installer)
+  1. Ouvrez Android Studio > "Open" > dossier FDL_Android. Attendez la fin de la synchronisation.
+  2. Menu Build > Build Bundle(s) / APK(s) > Build APK(s).
+  3. Le fichier est dans app\build\outputs\apk\debug\app-debug.apk
+
+----------------------------------------------------------------------
+2) INSTALLER SUR UN TELEPHONE
+----------------------------------------------------------------------
+  1. Envoyez app-debug.apk sur le telephone (cle USB, Google Drive, Bluetooth, partage de fichiers...).
+  2. Ouvrez le fichier. Android demande d'autoriser "l'installation d'applications
+     inconnues" pour l'application utilisee : acceptez. Si Play Protect affiche un
+     avertissement, choisissez "Installer quand meme" (l'application n'est pas publiee
+     sur le Play Store).
+  3. Au premier lancement, ACCEPTEZ les notifications.
+
+----------------------------------------------------------------------
+3) CHARGER LE PROGRAMME  (chaque semestre)
+----------------------------------------------------------------------
+  Responsable : dans l'application FDL (ordinateur), bouton "Page mobile..." -> FDL_Mon_Planning.html.
+                Envoyez ce fichier aux membres (WhatsApp, e-mail...).
+  Membre      : enregistrez le fichier recu sur le telephone, ouvrez l'application FDL,
+                touchez "Charger le programme" et choisissez FDL_Mon_Planning.html.
+                Choisissez ensuite votre groupe et votre nom. Les rappels sont programmes tout seuls.
+  Ensuite, si le responsable a configure la mise a jour en ligne, les nouveaux programmes
+  arrivent tout seuls a l'ouverture (onglet Rappels > "Verifier maintenant" pour forcer).
+  Sinon : onglet Rappels > "Charger le programme recu". Dans tous les cas, l'APK
+  n'a pas besoin d'etre refait.
+
+----------------------------------------------------------------------
+4) SI LES RAPPELS N'ARRIVENT PAS  (important)
+----------------------------------------------------------------------
+  Beaucoup de telephones (Tecno, Infinix, Xiaomi, Huawei, Samsung...) arretent les
+  applications en arriere-plan pour economiser la batterie. Pour l'application FDL :
+    - Reglages > Applications > FDL FJKM > Batterie : choisissez "Sans restriction" /
+      "Ne pas optimiser" ;
+    - autorisez le "Demarrage automatique" si le telephone le propose ;
+    - verifiez que les notifications sont autorisees.
+  Les rappels peuvent arriver avec quelques minutes de retard selon l'economie d'energie.
+
+----------------------------------------------------------------------
+5) METTRE A JOUR L'APPLICATION (nouvelle version du projet)
+----------------------------------------------------------------------
+  1. Dans le depot GitHub : "Add file" > "Upload files", glissez le dossier "app" du nouveau projet
+     (les fichiers de meme nom sont remplaces), puis "Commit changes". Une nouvelle construction demarre.
+  2. Telechargez le nouvel APK (Actions > derniere construction > Artifacts).
+  3. SUR LE TELEPHONE : desinstallez d'abord l'ancienne version (chaque construction est signee
+     differemment, Android refuse sinon : "application non installee"). Installez ensuite le nouvel APK
+     et rechargez le programme (ou laissez la mise a jour en ligne le faire).
+  La LANGUE et les TEXTES de la page (onglet "5. Langue et textes" de l'application FDL) arrivent avec le programme :
+  pas besoin de refaire l'APK pour les changer. L'APK doit etre refait UNE fois pour la version malagasy complete
+  (nouvelle page integree + messages natifs traduits). L'APK n'est a refaire que si le projet lui-meme change.
+
+----------------------------------------------------------------------
+6) SI LA CONSTRUCTION ECHOUE
+----------------------------------------------------------------------
+  Sur GitHub : Actions > cliquez sur la construction en rouge > copiez le message d'erreur
+  affiche et envoyez-le moi. Je corrige le projet.
+
+Fichiers importants : app\src\main\java\mg\fjkm\fdl\ (code), app\src\main\assets\index.html (page).
